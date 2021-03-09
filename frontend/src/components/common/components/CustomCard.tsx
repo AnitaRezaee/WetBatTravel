@@ -1,10 +1,11 @@
-import React from "react";
-import { Card, CardContent, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import React from 'react';
+import { Card, CardContent, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "50%",
+    width: '50%',
+    margin: theme.spacing(2, 1, 0, 1),
   },
   content: {
     paddingLeft: 0,
@@ -13,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
   header: {
     padding: theme.spacing(0, 2, 0.5, 2),
     borderBottom: `1px solid ${theme.palette.grey[300]}`,
-    alignItems: "center",
-    display: "flex",
+    alignItems: 'center',
+    display: 'flex',
   },
   title: {
     marginLeft: theme.spacing(0.5),
