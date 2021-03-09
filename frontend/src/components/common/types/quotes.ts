@@ -8,7 +8,7 @@ export type Quote = {
   transportation: string;
   name: string;
   email: string;
-  price?: string;
+  price: string;
 };
 
 export type AddQuote = Omit<Quote, 'id'>;
