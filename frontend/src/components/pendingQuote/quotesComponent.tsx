@@ -12,6 +12,7 @@ const createData = (
   people: string,
   transportation: string,
   name: string,
+  email: string,
   price: string
 ): Quote => {
   return {
@@ -24,6 +25,7 @@ const createData = (
     returnDate,
     people,
     transportation,
+    email,
   };
 };
 
@@ -37,6 +39,7 @@ const rows = [
     '2',
     'Car',
     'Katty abcd',
+    'katty@mail.com',
     '$1000'
   ),
   createData(
@@ -48,6 +51,7 @@ const rows = [
     '2',
     'Car',
     'Katty abcd',
+    'katty@mail.com',
     '$1000'
   ),
   createData(
@@ -59,6 +63,7 @@ const rows = [
     '2',
     'Car',
     'Katty abcd',
+    'katty@mail.com',
     '$1000'
   ),
   createData(
@@ -70,6 +75,7 @@ const rows = [
     '2',
     'Car',
     'Katty abcd',
+    'katty@mail.com',
     '$1000'
   ),
 ];

@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
       cursor: 'pointer',
     },
   },
-  selected: {},
 }));
 
 type PendingTableProps = {

@@ -7,6 +7,7 @@ export type Quote = {
   people: string;
   transportation: string;
   name: string;
+  email: string;
   price?: string;
 };
 

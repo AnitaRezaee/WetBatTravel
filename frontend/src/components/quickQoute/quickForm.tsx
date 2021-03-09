@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
-import { Button } from '@material-ui/core';
+import { Button, InputAdornment } from '@material-ui/core';
 import { DatePicker } from '@material-ui/pickers';
 import { DateTime } from 'luxon';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
@@ -53,6 +53,10 @@ export const QuickForm: React.FC = () => {
 
   const [name, setName] = useState('');
 
+  const [email, setEmail] = useState('');
+
+  const [price, setPrice] = useState('');
+
   const handleDepratureDateChange = useCallback(
     (input: MaterialUiPickersDate) => {
       setDepartureDate(input);
@@ -95,6 +99,20 @@ export const QuickForm: React.FC = () => {
   const handleNameChange = useCallback(
     (input: React.ChangeEvent<HTMLInputElement>) => {
       setName(input.target.value);
+    },
+    []
+  );
+
+  const handleEmailChange = useCallback(
+    (input: React.ChangeEvent<HTMLInputElement>) => {
+      setEmail(input.target.value);
+    },
+    []
+  );
+
+  const handlePriceChange = useCallback(
+    (input: React.ChangeEvent<HTMLInputElement>) => {
+      setPrice(input.target.value);
     },
     []
   );
@@ -210,6 +228,35 @@ export const QuickForm: React.FC = () => {
           onChange={handleNameChange}
           value={name}
           className={classes.textField}
+          margin="dense"
+          variant="filled"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+        <TextField
+          label="EMAIL"
+          id="EMAIL"
+          onChange={handleEmailChange}
+          value={email}
+          className={classes.textField}
+          margin="dense"
+          variant="filled"
+          InputLabelProps={{
+            shrink: true,
+          }}
+        />
+      </div>
+      <div className={classes.row}>
+        <TextField
+          label="PRICE"
+          id="PRICE"
+          onChange={handlePriceChange}
+          value={price}
+          className={classes.textField}
+          InputProps={{
+            startAdornment: <InputAdornment position="start">$</InputAdornment>,
+          }}
           margin="dense"
           variant="filled"
           InputLabelProps={{
