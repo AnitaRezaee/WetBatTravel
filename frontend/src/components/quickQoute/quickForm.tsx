@@ -132,6 +132,19 @@ export const QuickForm: React.FC = () => {
       price: price,
     };
     useSetQuote(quote);
+    resetTextField();
+  };
+
+  const resetTextField = () => {
+    setName('');
+    setEmail('');
+    setDepLocation('');
+    setDestLocation('');
+    setDepartureDate(null);
+    setReturnDate(null);
+    setPeople('0');
+    setTransportation('');
+    setPrice('');
   };
 
   return (
