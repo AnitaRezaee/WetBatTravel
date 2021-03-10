@@ -1,8 +1,6 @@
-# Server Configuration
-- In order to run the server please first ensure that you have installed a copy of mysql server locally 
-- By default, the app uses root. The username and password of the local database is `wetbat` and `wetbat2021`
-- The username and password can be changed on `.env` and `create-db.sh`
-- To instantiate the database and create the quotes table run: 
-  ### `create-db.sh`
-- To start the local server run:
-  ### `npm start`
+# Wet Bat Travel Repository
+- This project was created for a hypothetical travelling agency to allow employees to create travel quotes for their clients and view all created quotes
+- A detail screen of each quote can be viewed by selecting a quote from the `Pending quotes` table in UI
+- Follow the instructions of the `README` file in frontend folder to run and view the UI
+- Configure the server by following the instructions of the server `README ` file in the server folder
+
