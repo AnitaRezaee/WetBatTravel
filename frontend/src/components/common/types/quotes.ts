@@ -2,8 +2,8 @@ export type Quote = {
   id: string;
   from: string;
   destination: string;
-  departureDate: string;
-  returnDate: string;
+  departureDate: string | undefined;
+  returnDate: string | undefined;
   people: string;
   transportation: string;
   name: string;

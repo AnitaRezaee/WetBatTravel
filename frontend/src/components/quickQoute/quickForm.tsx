@@ -6,6 +6,8 @@ import { Button, InputAdornment } from '@material-ui/core';
 import { DatePicker } from '@material-ui/pickers';
 import { DateTime } from 'luxon';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
+import { AddQuote } from '../common/types';
+import { useSetQuote } from '../hooks/useSetQuote';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -116,6 +118,21 @@ export const QuickForm: React.FC = () => {
     },
     []
   );
+
+  const ButtonSelectHandler = () => {
+    const quote: AddQuote = {
+      name: name,
+      email: email,
+      from: depLocation,
+      destination: destLocation,
+      departureDate: departureDate?.toString(),
+      returnDate: returnDate?.toString(),
+      people: people,
+      transportation: transportation,
+      price: price,
+    };
+    useSetQuote(quote);
+  };
 
   return (
     <form className={classes.root} noValidate autoComplete="off">
@@ -265,6 +282,7 @@ export const QuickForm: React.FC = () => {
         />
         <Button
           className={classes.button}
+          onClick={ButtonSelectHandler}
           variant="contained"
           color="secondary">
           Create a quote

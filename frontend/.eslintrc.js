@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-undef
 module.exports = {
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser,
-  plugins: ['react', 'react-hooks', 'prettier', 'import', 'jest'],
+  plugins: ['react', 'react-hooks', 'prettier', 'import'],
   extends: [
     'eslint:recommended',
     'plugin:react/recommended', // Uses the recommended rules from @eslint-plugin-react
@@ -10,7 +10,6 @@ module.exports = {
     'prettier',
     'plugin:prettier/recommended',
     'plugin:import/errors',
-    'plugin:jest/recommended',
   ],
   ignorePatterns: ['node_modules'],
   parserOptions: {
@@ -24,7 +23,7 @@ module.exports = {
     // Place to specify ESLint rules. Can be used to overwrite rules specified from the extended configs
     // e.g. "@typescript-eslint/explicit-function-return-type": "off",
     'react/prop-types': 0,
-    'no-console': ['error', {}],
+    'no-console': ['warn', {}],
     'no-extra-boolean-cast': 0,
     'import/default': 0,
     'react-hooks/rules-of-hooks': 'error',
@@ -50,8 +49,6 @@ module.exports = {
         pathGroupsExcludedImportTypes: ['react'],
       },
     ],
-    'jest/valid-expect': 'error',
-    'jest/valid-describe': 'error',
   },
   overrides: [
     {

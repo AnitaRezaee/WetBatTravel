@@ -23,27 +23,32 @@ router.post(
       returnDate,
     } = body;
     const reqId = v4();
-    try {
-      const con = createConnection();
-      const statement = `
+    const con = createConnection();
+    const statement = `
           INSERT INTO ${TABLES.QUOTES} (id, name, email, departure, destination, transportation, people, price, departureDate, returnDate) VALUE (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `;
-      query(con, statement, [
-        reqId,
-        name,
-        email,
-        from,
-        destination,
-        transportation,
-        people,
-        price,
-        departureDate,
-        returnDate,
-      ]);
-    } catch (err) {
-      return next(httpErrors(500, err.message));
-    }
-    return res.status(200).send({ message: "new quote created" });
+    return query(con, statement, [
+      reqId,
+      name,
+      email,
+      from,
+      destination,
+      transportation,
+      people,
+      `$${price}`,
+      departureDate,
+      returnDate,
+    ])
+      .then(() => {
+        const resBody = {
+          message: "Quote has been created",
+        };
+
+        return res.status(200).send(resBody);
+      })
+      .catch((err) => {
+        return next(httpErrors(500, err.message));
+      });
   })
 );
 

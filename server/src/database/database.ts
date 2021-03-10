@@ -1,4 +1,4 @@
-import mysql, { Pool } from "mysql";
+import mysql, { Pool } from "mysql2";
 
 export const TABLES = {
   QUOTES: "quotes",
@@ -14,5 +14,5 @@ export const createConnection = () => {
 };
 
 export const query = (connection: Pool, query: string, params: any) => {
-  return connection.query(query, params, (error) => console.log(error));
+  return connection.promise().query(query, params);
 };

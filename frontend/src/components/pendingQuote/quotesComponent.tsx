@@ -1,90 +1,19 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Quote } from '../common/types';
+import { useGetQuotes } from '../hooks';
 import PendingTable from './pendingTable';
 import QuoteDetailsDialog from './quoteDetailsDialog';
-
-const createData = (
-  id: string,
-  from: string,
-  destination: string,
-  departureDate: string,
-  returnDate: string,
-  people: string,
-  transportation: string,
-  name: string,
-  email: string,
-  price: string
-): Quote => {
-  return {
-    id,
-    from,
-    name,
-    destination,
-    price,
-    departureDate,
-    returnDate,
-    people,
-    transportation,
-    email,
-  };
-};
-
-const rows = [
-  createData(
-    '123456',
-    'CALGARY',
-    'VANCOUVER',
-    'Mar 13, 2021',
-    'Mar 14, 2021',
-    '2',
-    'Car',
-    'Katty abcd',
-    'katty@mail.com',
-    '$1000'
-  ),
-  createData(
-    '123456',
-    'CALGARY',
-    'VANCOUVER',
-    'Mar 13, 2021',
-    'Mar 14, 2021',
-    '2',
-    'Car',
-    'Katty abcd',
-    'katty@mail.com',
-    '$1000'
-  ),
-  createData(
-    '123456',
-    'CALGARY',
-    'VANCOUVER',
-    'Mar 13, 2021',
-    'Mar 14, 2021',
-    '2',
-    'Car',
-    'Katty abcd',
-    'katty@mail.com',
-    '$1000'
-  ),
-  createData(
-    '123456',
-    'CALGARY',
-    'VANCOUVER',
-    'Mar 13, 2021',
-    'Mar 14, 2021',
-    '2',
-    'Car',
-    'Katty abcd',
-    'katty@mail.com',
-    '$1000'
-  ),
-];
 
 export const QuotesComponent: React.FC = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedQuote, setSelectedQuote] = useState<Quote | undefined>(
     undefined
   );
+  const { allQuotes, getAllQuotes } = useGetQuotes();
+  useEffect(() => {
+    getAllQuotes();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const rowSelectHandler = useCallback((quote: Quote) => {
     setSelectedQuote(quote);
@@ -96,7 +25,7 @@ export const QuotesComponent: React.FC = () => {
   }, []);
   return (
     <>
-      <PendingTable quotes={rows} rowSelectHandler={rowSelectHandler} />
+      <PendingTable quotes={allQuotes} rowSelectHandler={rowSelectHandler} />
       <QuoteDetailsDialog
         quote={selectedQuote}
         open={openDialog}

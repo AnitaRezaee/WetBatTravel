@@ -16,6 +16,6 @@ app.use(
   })
 );
 
-app.use("quote", quoteRoutes);
+app.use("/quotes", quoteRoutes);
 
 export default app;

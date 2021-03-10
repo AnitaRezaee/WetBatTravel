@@ -19,6 +19,13 @@ const useStyles = makeStyles((theme) => ({
       cursor: 'pointer',
     },
   },
+  idCell: {
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    maxWidth: theme.spacing(12.5),
+    width: theme.spacing(12.5),
+    whiteSpace: 'nowrap',
+  },
 }));
 
 type PendingTableProps = {
@@ -50,7 +57,9 @@ export const PendingTable: React.FC<PendingTableProps> = ({
               onClick={() => rowSelectHandler(row)}
               hover
               className={classes.tableRow}>
-              <TableCell align="left">{row.id}</TableCell>
+              <TableCell align="left" className={classes.idCell}>
+                {row.id}
+              </TableCell>
               <TableCell align="left">{row.name}</TableCell>
               <TableCell align="left">{row.destination}</TableCell>
               <TableCell align="left">{row.price}</TableCell>
