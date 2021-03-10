@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '50%',
     margin: theme.spacing(2, 1, 0, 1),
+    height: 'max-content',
   },
   content: {
     paddingLeft: 0,

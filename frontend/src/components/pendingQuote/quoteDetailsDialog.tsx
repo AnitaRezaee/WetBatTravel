@@ -15,6 +15,7 @@ import {
 } from '@material-ui/core';
 import List from '@material-ui/core/List';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { DateTime } from 'luxon';
 import { Quote } from '../common/types';
 import { QuoteListDetails } from './quoteListDetails';
 
@@ -75,12 +76,16 @@ export const QuoteDetailsDialog: React.FC<QuoteDetailsDialogProps> = ({
           <QuoteListDetails
             icon={<TodayIcon />}
             text="Departure Date"
-            data={quote?.departureDate}
+            data={DateTime.fromISO(quote?.departureDate ?? '').toFormat(
+              'MMM dd, yyyy'
+            )}
           />
           <QuoteListDetails
             icon={<EventIcon />}
             text="Return Date"
-            data={quote?.returnDate}
+            data={DateTime.fromISO(quote?.returnDate ?? '').toFormat(
+              'MMM dd, yyyy'
+            )}
           />
           <QuoteListDetails
             icon={<PeopleIcon />}

@@ -2,8 +2,8 @@ export type Quote = {
   id: string;
   from: string;
   destination: string;
-  departureDate: string | undefined;
-  returnDate: string | undefined;
+  departureDate: string;
+  returnDate: string;
   people: string;
   transportation: string;
   name: string;
@@ -11,4 +11,4 @@ export type Quote = {
   price: string;
 };
 
-export type AddQuote = Omit<Quote, 'id'>;
+export type AddQuote = Omit<Quote, "id">;
