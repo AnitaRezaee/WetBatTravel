@@ -2,7 +2,7 @@ import { Router } from "express";
 import asyncHandler from "express-async-handler";
 import httpErrors from "http-errors";
 import { RowDataPacket } from "mysql2";
-import { createConnection, TABLES } from "../../database/database";
+import { CONNECTION_POOL, TABLES } from "../../database/database";
 import { Quote } from "../../types/Quote";
 
 const router = Router();
@@ -12,10 +12,9 @@ router.get(
   asyncHandler(async (req, res, next) => {
     const quotes: Quote[] = [];
 
-    const con = createConnection();
     const statement = `SELECT * FROM ${TABLES.QUOTES}`;
-    return con
-      .promise()
+
+    return CONNECTION_POOL.promise()
       .query<RowDataPacket[]>(statement)
       .then(([rows]) => {
         rows.map((row) =>

@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 export const QuickForm: React.FC = () => {
   const classes = useStyles();
+  const { setQuote } = useSetQuote();
 
   const numberofPeople = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   const transport = ['Rental Car', 'Plane', 'Bus'];
@@ -119,7 +120,7 @@ export const QuickForm: React.FC = () => {
     []
   );
 
-  const ButtonSelectHandler = () => {
+  const ButtonSelectHandler = useCallback(() => {
     const quote: AddQuote = {
       name: name,
       email: email,
@@ -131,9 +132,20 @@ export const QuickForm: React.FC = () => {
       transportation: transportation,
       price: price,
     };
-    useSetQuote(quote);
+    setQuote(quote);
     resetTextField();
-  };
+  }, [
+    depLocation,
+    departureDate,
+    destLocation,
+    email,
+    name,
+    people,
+    price,
+    returnDate,
+    setQuote,
+    transportation,
+  ]);
 
   const resetTextField = () => {
     setName('');

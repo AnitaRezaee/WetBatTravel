@@ -1,11 +1,12 @@
-import express, { NextFunction, Request, Response } from "express";
+import express from "express";
 import cors from "cors";
 import asyncHandler from "express-async-handler";
-import bodyParser, { json } from "body-parser";
+import bodyParser from "body-parser";
 import { quoteRoutes } from "./routes/quote/quote";
+import { createConnection } from "./database/database";
 
 const app = express();
-
+createConnection();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
